@@ -41,7 +41,7 @@ module Fantasydata
       # Handle 5xx server responses
       builder.use Fantasydata::Response::RaiseError, Fantasydata::Error::ServerError
       
-      builder.use Faraday::Response::Logger
+      # builder.use Faraday::Response::Logger
 
       # Set Faraday's HTTP adapter
       builder.adapter Faraday.default_adapter
