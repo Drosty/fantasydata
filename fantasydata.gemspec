@@ -4,9 +4,9 @@ require File.expand_path('../lib/fantasydata/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Ryan Drost"]
   gem.email         = ["ryan.s.drost@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Wrap www.fantasydata.com API}
+  gem.summary       = %q{This gem will wrap the FantasyData API and give easy access to the calls that can be made}
+  gem.homepage      = "https://github.com/Drosty/fantasydata"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
