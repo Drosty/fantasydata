@@ -8,7 +8,7 @@ require 'faraday'
 # require 'fantasydata/error/not_found'
 # require 'fantasydata/error/service_unavailable'
 # require 'fantasydata/error/too_many_requests'
-# require 'fantasydata/error/unauthorized'
+require 'fantasydata/error/unauthorized'
 # require 'fantasydata/error/unprocessable_entity'
 
 module Fantasydata
