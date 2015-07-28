@@ -29,7 +29,7 @@ describe Fantasydata::Error do
     end
 
     it "should return Fantasydata badrequest when 401 is returned" do
-      expect{@client.games_in_progress}.to raise_error(Fantasydata::Error::Unauthorized)
+      expect{@client.games_in_progress?}.to raise_error(Fantasydata::Error::Unauthorized)
     end
 
   end

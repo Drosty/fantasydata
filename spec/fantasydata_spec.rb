@@ -26,12 +26,12 @@ describe Fantasydata do
       end
 
       it "returns the same results as a client" do
-        expect(Fantasydata.games_in_progress()).to eq Fantasydata::Client.new.games_in_progress()
+        expect(Fantasydata.games_in_progress?).to eq Fantasydata::Client.new.games_in_progress?
       end
 
       describe ".respond_to?" do
         it "delegates to Fantasydata::Client" do
-          expect(Fantasydata.respond_to?(:games_in_progress)).to be_truthy
+          expect(Fantasydata.respond_to?(:games_in_progress?)).to be_truthy
         end
         it "takes an optional argument" do
           expect(Fantasydata.respond_to?(:client, true)).to be_truthy
