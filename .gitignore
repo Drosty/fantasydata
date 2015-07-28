@@ -1,0 +1,19 @@
+## PROJECT::GENERAL
+coverage
+rdoc
+doc
+log
+pkg/*
+tmp
+.rvmrc
+.rbenv*
+
+## BUNDLER
+bin
+*.gem
+.bundle
+Gemfile.lock
+/bundle
+
+## PROJECT::SPECIFIC
+.rbx
