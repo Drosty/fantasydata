@@ -3,6 +3,7 @@ require 'faraday/request/multipart'
 require 'fantasydata/configurable'
 require 'fantasydata/error/client_error'
 require 'fantasydata/error/server_error'
+require 'fantasydata/response/parse_json'
 require 'fantasydata/response/raise_error'
 require 'fantasydata/version'
 
@@ -25,15 +26,25 @@ module Fantasydata
     } unless defined? Fantasydata::Default::CONNECTION_OPTIONS
     IDENTITY_MAP = false unless defined? Fantasydata::Default::IDENTITY_MAP
     MIDDLEWARE = Faraday::RackBuilder.new do |builder|
-
+      # Convert file uploads to Faraday::UploadIO objects
+      # builder.use Fantasydata::Request::MultipartWithFile
+      
+      # Checks for files in the payload
+      builder.use Faraday::Request::Multipart
+      
       # Convert request params to "www-form-urlencoded"
       builder.use Faraday::Request::UrlEncoded
-
+      
       # Handle 4xx server responses
       builder.use Fantasydata::Response::RaiseError, Fantasydata::Error::ClientError
-
+      
+      # Parse JSON response bodies using MultiJson
+      builder.use Fantasydata::Response::ParseJson
+      
       # Handle 5xx server responses
       builder.use Fantasydata::Response::RaiseError, Fantasydata::Error::ServerError
+      
+      builder.use Faraday::Response::Logger
 
       # Set Faraday's HTTP adapter
       builder.adapter Faraday.default_adapter

@@ -1,7 +1,8 @@
 module Fantasydata
-  # Custom error class for rescuing from all Echowrap errors
+  # Custom error class for rescuing from all Fantasydata errors
   class Error < StandardError
-    attr_reader :rate_limit, :wrapped_exception
+    attr_reader :wrapped_exception
+    # attr_reader :rate_limit, :wrapped_exception
 
     # @return [Hash]
     def self.errors
@@ -19,7 +20,7 @@ module Fantasydata
     # @param response_headers [Hash]
     # @return [Echowrap::Error]
     def initialize(exception=$!, response_headers={})
-      @rate_limit = Fantasydata::RateLimit.new(response_headers)
+      # @rate_limit = Fantasydata::RateLimit.new(response_headers)
       @wrapped_exception = exception
       exception.respond_to?(:backtrace) ? super(exception.message) : super(exception.to_s)
     end

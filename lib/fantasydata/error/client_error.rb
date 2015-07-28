@@ -16,7 +16,7 @@ module Fantasydata
     private
 
       def self.parse_error(body)
-        body[:response][:status][:message]
+        body[:statusCode]
       end
 
     end
