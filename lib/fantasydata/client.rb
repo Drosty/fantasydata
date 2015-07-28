@@ -31,12 +31,8 @@ module Fantasydata
 
     private
 
-      def setup_authentication_parameters(method, path, params)
-        params.merge(:api_key => @api_key)
-      end
-
       def request(method, path, params={}, signature_params=params)
-        params = setup_authentication_parameters(method, path, params)
+        connection.headers['Ocp-Apim-Subscription-Key'] = @api_key
         connection.send(method.to_sym, path, params).env
       rescue Faraday::Error::ClientError
         raise Fantasydata::Error::ClientError

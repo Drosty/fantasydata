@@ -13,7 +13,7 @@ module Fantasydata
     CONNECTION_OPTIONS = {
       :headers => {
         :accept => 'application/json',
-        :user_agent => "FantasyData Ruby Gem #{Fantasydata::VERSION}",
+        :user_agent => "FantasyData Ruby Gem #{Fantasydata::VERSION}"
       },
       :request => {
         :open_timeout => 5,
@@ -26,9 +26,6 @@ module Fantasydata
     } unless defined? Fantasydata::Default::CONNECTION_OPTIONS
     IDENTITY_MAP = false unless defined? Fantasydata::Default::IDENTITY_MAP
     MIDDLEWARE = Faraday::RackBuilder.new do |builder|
-      # Convert file uploads to Faraday::UploadIO objects
-      # builder.use Fantasydata::Request::MultipartWithFile
-      
       # Checks for files in the payload
       builder.use Faraday::Request::Multipart
       

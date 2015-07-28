@@ -13,24 +13,19 @@ RSpec.configure do |config|
 end
 
 def new_test_client
-  client = Fantasydata::Client.new(:api_key => "AK")
+  client = Fantasydata::Client.new.configure { |d| d.api_key = "API" }
   #Param encoder is being set here because webmock expects params encodeded a certain way
   #Normally, you won't set this option, it's already configured for Fantasydata in lib/echowrap/default.rb
   client.connection_options[:request][:params_encoder] = Faraday::NestedParamsEncoder
   client
 end
 
-def a_get(path, add_api_key = true)
-  a_request(:get, Fantasydata::Default::ENDPOINT + path + api_key(add_api_key))
+def a_get(path)
+  a_request(:get, Fantasydata::Default::ENDPOINT + path)
 end
 
-def stub_get(path, add_api_key = true)
-  stub_http_request(:get, Fantasydata::Default::ENDPOINT + path + api_key(add_api_key))
-end
-
-
-def api_key(add_api_key = true)
-  add_api_key ? '?api_key=AK' : ''
+def stub_get(path)
+  stub_http_request(:get, Fantasydata::Default::ENDPOINT + path)
 end
 
 def fixture_path
