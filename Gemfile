@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'pry'
 
 group :test do
+  gem 'pry'
   gem 'coveralls', :require => false
   gem 'rspec',   '~>3.0'
   gem 'webmock', '~>1.0'
