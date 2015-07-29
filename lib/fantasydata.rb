@@ -2,6 +2,7 @@ require "fantasydata/version"
 require 'fantasydata/client'
 require 'fantasydata/configurable'
 require 'fantasydata/bye_week'
+require 'fantasydata/daily_fantasy_player'
 require 'fantasydata/error'
 require 'fantasydata/version'
 

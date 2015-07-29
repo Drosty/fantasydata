@@ -4,12 +4,14 @@ require 'fantasydata/configurable'
 require 'fantasydata/api/game'
 require 'fantasydata/api/box_score'
 require 'fantasydata/api/bye_weeks'
+require 'fantasydata/api/daily_fantasy'
 
 module Fantasydata
   class Client
     include Fantasydata::API::Game
     include Fantasydata::API::ByeWeeks
     include Fantasydata::API::BoxScore
+    include Fantasydata::API::DailyFantasy
     include Fantasydata::Configurable
 
     # Initializes a new Client object

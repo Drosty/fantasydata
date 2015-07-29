@@ -33,7 +33,7 @@ module Fantasydata
     def initialize(attrs={})
       new_attrs = {}
       attrs.to_hash.each_pair do |k,v|
-        new_attrs.merge!({k.downcase => v})
+        new_attrs.merge!({underscore_key(k) => v})
       end
       @attrs = new_attrs
     end
@@ -56,6 +56,14 @@ module Fantasydata
     end
 
   protected
+
+    def underscore_key(str)
+      str.to_s.gsub(/::/, '/').
+      gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+      gsub(/([a-z\d])([A-Z])/,'\1_\2').
+      tr("-", "_").
+      downcase.to_sym
+    end
 
     # @param attr [Symbol]
     # @param other [Fantasydata::Base]
