@@ -3,10 +3,13 @@ require 'multi_json'
 require 'fantasydata/configurable'
 require 'fantasydata/api/game'
 require 'fantasydata/api/box_score'
+require 'fantasydata/api/bye_weeks'
 
 module Fantasydata
   class Client
     include Fantasydata::API::Game
+    include Fantasydata::API::ByeWeeks
+    include Fantasydata::API::BoxScore
     include Fantasydata::Configurable
 
     # Initializes a new Client object

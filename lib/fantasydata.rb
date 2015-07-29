@@ -1,6 +1,9 @@
 require "fantasydata/version"
 require 'fantasydata/client'
 require 'fantasydata/configurable'
+require 'fantasydata/bye_week'
+require 'fantasydata/error'
+require 'fantasydata/version'
 
 module Fantasydata
   class << self
