@@ -9,7 +9,8 @@ module Fantasydata
       #
       # @see https://developer.fantasydata.com/docs/services/556a892e35491a1d30c7a8ba/operations/556a892f35491a02d05ebf3d
       # @authentication Requires api key
-      # @raise [Echowrap::Error::Unauthorized] Error raised when supplied api key is not valid.      # @raise [Echowrap::Error::Unauthorized] Error raised when supplied user credentials are not valid.
+      # @raise [Fantasydata::Error::Unauthorized] Error raised when supplied api key is not valid.
+      # @raise [Fantasydata::Error::Unauthorized] Error raised when supplied user credentials are not valid.
       # @return [boolean]
       #
       # @example games_in_progress
