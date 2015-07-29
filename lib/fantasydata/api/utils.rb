@@ -49,7 +49,7 @@ module Fantasydata
       # @return [Object]
       def boolean_from_response(request_method, path, options={})
         response = send(request_method.to_sym, path, options)
-        response[:body].to_s == SUCCESS # || response[:body][:response][:status][:code] == SUCCESS
+        response[:body] == SUCCESS # || response[:body][:response][:status][:code] == SUCCESS
       end
     end
   end
