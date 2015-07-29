@@ -16,7 +16,7 @@ module Fantasydata
       # @param path [String]
       # @param options [Hash]
       # @return [Array]
-      def objects_from_response(klass, request_method, path, object_key)
+      def objects_from_response(klass, request_method, path)
         response = send(request_method.to_sym, path)[:body] || []
         objects_from_array(klass, response)
       end
@@ -36,9 +36,8 @@ module Fantasydata
       # @param object_key [Symbol]
       # @param options [Hash]
       # @return [Object]
-      def object_from_response(klass, request_method, path, object_key, options={})
-        response = send(request_method.to_sym, path, options)[:body][:response]
-        response = response[object_key] if object_key
+      def object_from_response(klass, request_method, path)
+        response = send(request_method.to_sym, path)[:body]
         klass.new(response)
       end
 
@@ -47,9 +46,9 @@ module Fantasydata
       # @param path [String]
       # @param options [Hash]
       # @return [Object]
-      def boolean_from_response(request_method, path, options={})
-        response = send(request_method.to_sym, path, options)
-        response[:body] == SUCCESS # || response[:body][:response][:status][:code] == SUCCESS
+      def boolean_from_response(request_method, path)
+        response = send(request_method.to_sym, path)
+        response[:body] == SUCCESS
       end
     end
   end

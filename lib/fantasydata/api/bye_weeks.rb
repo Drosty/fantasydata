@@ -16,7 +16,7 @@ module Fantasydata
       # @example bye_weeks_for_season
       #   Fantasydata.bye_weeks_for_season('2015REG')
       def bye_weeks_for_season(season)
-        objects_from_response(Fantasydata::ByeWeek, :get, "/nfl/v2/JSON/Byes/#{season}", :keyhere)
+        objects_from_response(Fantasydata::ByeWeek, :get, "/nfl/v2/JSON/Byes/#{season}")
       end
 
     end
