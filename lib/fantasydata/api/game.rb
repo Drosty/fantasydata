@@ -15,8 +15,8 @@ module Fantasydata
       #
       # @example games_in_progress
       #   Fantasydata.games_in_progress?
-      def games_in_progress?(options={})
-        boolean_from_response(:get, '/nfl/v2/JSON/AreAnyGamesInProgress', options)
+      def games_in_progress?()
+        boolean_from_response(:get, '/nfl/v2/JSON/AreAnyGamesInProgress')
       end
 
     end
