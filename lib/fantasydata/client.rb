@@ -2,6 +2,7 @@ require 'faraday'
 require 'multi_json'
 require 'fantasydata/configurable'
 require 'fantasydata/api/game'
+require 'fantasydata/api/box_score'
 
 module Fantasydata
   class Client
