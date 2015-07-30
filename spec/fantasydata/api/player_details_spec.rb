@@ -69,6 +69,9 @@ describe Fantasydata::API::DailyFantasy do
 
       expect(player.season_stats.scoring_details).to be_an Array
       expect(player.season_stats.scoring_details.first.game_key).to eq '201410110'
+
+      expect(player.latest_news).to be_an Array
+      expect(player.latest_news.first.news_id).to eq 34904
     end
   end
 

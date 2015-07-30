@@ -19,5 +19,9 @@ module Fantasydata
       @season_stats ||= Fantasydata::SeasonStats.new(@attrs[:player_season])
     end
 
+    def latest_news
+      @latest_news ||= map_collection(Fantasydata::News, :latest_news)
+    end
+
   end
 end
