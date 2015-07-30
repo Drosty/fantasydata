@@ -32,7 +32,7 @@ module Fantasydata
       #   Fantasydata.daily_fantasy_for_day('2014-SEP-21')
       def daily_fantasy_points_for_day(day)
         day = convert_to_date(day)
-        objects_from_response(Fantasydata::DailyFantasyPlayer, :get, "/nfl/v2/JSON/DailyFantasyPoints/#{day}")
+        objects_from_response(Fantasydata::DailyFantasyPoints, :get, "/nfl/v2/JSON/DailyFantasyPoints/#{day}")
       end
 
       private

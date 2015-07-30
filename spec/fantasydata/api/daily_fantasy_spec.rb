@@ -63,6 +63,18 @@ describe Fantasydata::API::DailyFantasy do
       expect(a_get("/nfl/v2/JSON/DailyFantasyPoints/2014-SEP-21")).to have_been_made
     end
 
+    it "returns player data" do
+      players = @client.daily_fantasy_points_for_day('2014-SEP-21')
+
+      expect(players).to be_an Array
+      expect(players.first.player_id).to eq 2593
+      expect(players.first.name).to eq 'Aaron Rodgers'
+      expect(players.first.fantasy_points).to eq 28.64
+      expect(players.first.has_started).to eq true
+      expect(players.first.is_in_progress).to eq false
+      expect(players.first.is_over).to eq true
+      expect(players.first.date).to eq nil
+    end
   end
 
 end
