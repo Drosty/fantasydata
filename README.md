@@ -1,5 +1,8 @@
 # Fantasydata
 
+[![Build Status](https://travis-ci.org/Drosty/fantasydata.svg?branch=master)](https://travis-ci.org/Drosty/fantasydata)[![Code Climate](https://codeclimate.com/github/Drosty/fantasydata/badges/gpa.svg)](https://codeclimate.com/github/Drosty/fantasydata)[![Test Coverage](https://codeclimate.com/github/Drosty/fantasydata/badges/coverage.svg)](https://codeclimate.com/github/Drosty/fantasydata/coverage)
+
+
 TODO: Write a gem description
 
 ## Installation
