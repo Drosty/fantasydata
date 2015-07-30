@@ -4,7 +4,7 @@ gem 'rake'
 
 group :test do
   gem 'pry'
-  gem 'coveralls', :require => false
+  gem "codeclimate-test-reporter", require: nil
   gem 'rspec',   '~>3.0'
   gem 'webmock', '~>1.0'
   gem 'timecop', '~>0.0'
