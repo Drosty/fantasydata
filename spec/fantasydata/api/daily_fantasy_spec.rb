@@ -6,7 +6,7 @@ describe Fantasydata::API::DailyFantasy do
     @client = new_test_client
   end
 
-  describe '#bye_weeks_season' do
+  describe '#daily_fantasy_players' do
     before do
       stub_get("/nfl/v2/JSON/DailyFantasyPlayers/2014-SEP-21").
       to_return(:body => fixture("daily_fantasy/daily_players.json"),
@@ -14,17 +14,17 @@ describe Fantasydata::API::DailyFantasy do
     end
 
     it "requests correct resource - pass string" do
-      bye_weeks = @client.daily_fantasy_for_day('2014-SEP-21')
+      @client.daily_fantasy_players_for_day('2014-SEP-21')
       expect(a_get("/nfl/v2/JSON/DailyFantasyPlayers/2014-SEP-21")).to have_been_made
     end
 
     it "requests correct resource - pass date" do
-      bye_weeks = @client.daily_fantasy_for_day(DateTime.parse("2014/09/21"))
+      @client.daily_fantasy_players_for_day(DateTime.parse("2014/09/21"))
       expect(a_get("/nfl/v2/JSON/DailyFantasyPlayers/2014-SEP-21")).to have_been_made
     end
 
     it "returns players" do
-      players = @client.daily_fantasy_for_day('2014-SEP-21')
+      players = @client.daily_fantasy_players_for_day('2014-SEP-21')
 
       expect(players).to be_an Array
       expect(players.first.player_id).to eq 7328
@@ -42,6 +42,25 @@ describe Fantasydata::API::DailyFantasy do
       expect(players.first.status).to eq 'Healthy'
       expect(players.first.status_code).to eq 'ACT'
       expect(players.first.status_color).to eq 'green'
+    end
+  end
+
+
+  describe '#daily_fantasy_results' do
+    before do
+      stub_get("/nfl/v2/JSON/DailyFantasyPoints/2014-SEP-21").
+      to_return(:body => fixture("daily_fantasy/daily_points.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource - pass string" do
+      @client.daily_fantasy_points_for_day('2014-SEP-21')
+      expect(a_get("/nfl/v2/JSON/DailyFantasyPoints/2014-SEP-21")).to have_been_made
+    end
+
+    it "requests correct resource - pass date" do
+      @client.daily_fantasy_points_for_day(DateTime.parse("2014/09/21"))
+      expect(a_get("/nfl/v2/JSON/DailyFantasyPoints/2014-SEP-21")).to have_been_made
     end
 
   end
