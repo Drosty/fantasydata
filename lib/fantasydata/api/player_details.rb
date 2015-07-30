@@ -10,6 +10,7 @@ module Fantasydata
       end
 
       def player_details_free_agents
+        objects_from_response(Fantasydata::PlayerDetail, :get, "/nfl/v2/JSON/FreeAgents")
       end
 
       def player_details_by_team(team_name)
