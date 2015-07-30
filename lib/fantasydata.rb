@@ -5,6 +5,8 @@ require 'fantasydata/bye_week'
 require 'fantasydata/daily_fantasy_player'
 require 'fantasydata/daily_fantasy_points'
 require 'fantasydata/player_detail'
+require 'fantasydata/season_stats'
+require 'fantasydata/scoring_detail'
 require 'fantasydata/error'
 require 'fantasydata/version'
 
