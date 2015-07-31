@@ -36,19 +36,19 @@ module Fantasydata
       end
 
       def daily_fantasy_defense_game_stats week, year
-        objects_from_response(Fantasydata::DailyFantasyPlayerStats, :get, "/nfl/v2/XML/FantasyDefenseByGame/#{year}/#{week}")
+        objects_from_response(Fantasydata::DailyFantasyPlayerStats, :get, "/nfl/v2/JSON/FantasyDefenseByGame/#{year}/#{week}")
       end
 
-      def daily_fantasy_defense_game_stats_projected week, year
-      
+      def daily_fantasy_defense_game_projected_stats week, year
+        objects_from_response(Fantasydata::DailyFantasyPlayerStats, :get, "/nfl/v2/JSON/FantasyDefenseProjectionsByGame/#{year}/#{week}")
       end
 
-      def daily_fantasy_defense_season_stats season
-      
+      def daily_fantasy_defense_season_stats year
+
       end
 
-      def daily_fantasy_defense_season_stats_projected season
-      
+      def daily_fantasy_defense_season_projected_stats year
+
       end
 
 

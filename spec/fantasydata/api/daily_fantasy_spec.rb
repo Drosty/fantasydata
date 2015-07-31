@@ -78,14 +78,14 @@ describe Fantasydata::API::DailyFantasy do
 
   describe '#daily_fantasy_defense_game_stats' do
     before do
-      stub_get("/nfl/v2/XML/FantasyDefenseByGame/2014/12").
+      stub_get("/nfl/v2/JSON/FantasyDefenseByGame/2014/12").
       to_return(:body => fixture("daily_fantasy/daily_defense_game.json"),
                  :headers => {:content_type => "application/json; charset=utf-8"})
     end
 
     it "requests correct resource" do
       @client.daily_fantasy_defense_game_stats(12, 2014)
-      expect(a_get("/nfl/v2/XML/FantasyDefenseByGame/2014/12")).to have_been_made
+      expect(a_get("/nfl/v2/JSON/FantasyDefenseByGame/2014/12")).to have_been_made
     end
 
     it "returns player data" do
@@ -98,5 +98,28 @@ describe Fantasydata::API::DailyFantasy do
       expect(defenses.first.scoring_details.first.game_key).to eq "201411222"
     end
   end
+
+  describe '#daily_fantasy_defense_game_stats_projected' do
+    before do
+      stub_get("/nfl/v2/JSON/FantasyDefenseProjectionsByGame/2014/12").
+      to_return(:body => fixture("daily_fantasy/defense_game_stats_projected.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.daily_fantasy_defense_game_projected_stats(12, 2014)
+      expect(a_get("/nfl/v2/JSON/FantasyDefenseProjectionsByGame/2014/12")).to have_been_made
+    end
+
+    it "returns player data" do
+      defenses = @client.daily_fantasy_defense_game_projected_stats(12, 2014)
+
+      expect(defenses).to be_an Array
+      expect(defenses.first.scoring_details).to be_an Array
+
+      expect(defenses.first.team).to eq 'OAK'
+    end
+  end
+
 
 end
