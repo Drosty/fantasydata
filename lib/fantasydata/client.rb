@@ -7,6 +7,7 @@ require 'fantasydata/api/bye_weeks'
 require 'fantasydata/api/player_details'
 require 'fantasydata/api/news'
 require 'fantasydata/api/week'
+require 'fantasydata/api/stadium'
 require 'fantasydata/api/daily_fantasy'
 
 module Fantasydata
@@ -17,6 +18,7 @@ module Fantasydata
     include Fantasydata::API::DailyFantasy
     include Fantasydata::API::News
     include Fantasydata::API::PlayerDetails
+    include Fantasydata::API::Stadium
     include Fantasydata::API::Week
     include Fantasydata::Configurable
 

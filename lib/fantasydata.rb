@@ -8,6 +8,7 @@ require 'fantasydata/news'
 require 'fantasydata/player_detail'
 require 'fantasydata/season_stats'
 require 'fantasydata/scoring_detail'
+require 'fantasydata/stadium'
 require 'fantasydata/error'
 require 'fantasydata/version'
 
