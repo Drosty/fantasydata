@@ -9,6 +9,10 @@ module Fantasydata
         objects_from_response(Fantasydata::News, :get, "/nfl/v2/XML/NewsByPlayerID/#{player_id}")
       end
 
+      def news_by_team(team_name)
+        objects_from_response(Fantasydata::News, :get, "/nfl/v2/JSON/NewsByTeam/#{team_name}")
+      end
+
     end
   end
 end
