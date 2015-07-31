@@ -13,6 +13,11 @@ describe Fantasydata::API::Game do
                  :headers => {:content_type => "application/json; charset=utf-8"})
     end
 
+    it "requests correct resource" do
+      @client.games_in_progress?
+      expect(a_get("/nfl/v2/JSON/AreAnyGamesInProgress")).to have_been_made
+    end
+
     it "returns false" do
       in_progress = @client.games_in_progress?
       expect(in_progress).to eq false
