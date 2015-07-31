@@ -8,14 +8,14 @@ describe Fantasydata::API::News do
 
   describe '#news_by_player_id' do
     before do
-      stub_get("/nfl/v2/XML/NewsByPlayerID/1326").
+      stub_get("/nfl/v2/JSON/NewsByPlayerID/1326").
       to_return(:body => fixture("news/by_player.json"),
                  :headers => {:content_type => "application/json; charset=utf-8"})
     end
 
     it "requests correct resource" do
       @client.news_by_player_id(1326)
-      expect(a_get("/nfl/v2/XML/NewsByPlayerID/1326")).to have_been_made
+      expect(a_get("/nfl/v2/JSON/NewsByPlayerID/1326")).to have_been_made
     end
 
     it "returns returns news" do
