@@ -1,6 +1,6 @@
 require 'helper'
 
-describe Fantasydata::API::DailyFantasy do
+describe Fantasydata::API::Stadium do
 
   before do
     @client = new_test_client
