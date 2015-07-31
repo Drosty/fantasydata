@@ -19,6 +19,9 @@ module Fantasydata
         boolean_from_response(:get, '/nfl/v2/JSON/AreAnyGamesInProgress')
       end
 
+      def game_stats_by_week(year, week)
+        objects_from_response(Fantasydata::GameStat, :get, "/nfl/v2/JSON/GameStatsByWeek/#{year}/#{week}")
+      end
     end
   end
 end
