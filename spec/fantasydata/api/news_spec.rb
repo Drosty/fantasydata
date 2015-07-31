@@ -44,5 +44,23 @@ describe Fantasydata::API::Game do
     end
   end
 
+  describe '#news_recent' do
+    before do
+      stub_get("/nfl/v2/JSON/News").
+      to_return(:body => fixture("news/recent.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.news_recent
+      expect(a_get("/nfl/v2/JSON/News")).to have_been_made
+    end
+
+    it "returns returns news" do
+      news = @client.news_recent
+      expect(news).to be_an Array
+      expect(news.first.news_id).to eq 36084
+    end
+  end
 
 end
