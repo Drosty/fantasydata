@@ -45,7 +45,6 @@ describe Fantasydata::API::DailyFantasy do
     end
   end
 
-
   describe '#daily_fantasy_results' do
     before do
       stub_get("/nfl/v2/JSON/DailyFantasyPoints/2014-SEP-21").
@@ -74,6 +73,29 @@ describe Fantasydata::API::DailyFantasy do
       expect(players.first.is_in_progress).to eq false
       expect(players.first.is_over).to eq true
       expect(players.first.date).to eq nil
+    end
+  end
+
+  describe '#daily_fantasy_defense_game_stats' do
+    before do
+      stub_get("/nfl/v2/XML/FantasyDefenseByGame/2014/12").
+      to_return(:body => fixture("daily_fantasy/daily_defense_game.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.daily_fantasy_defense_game_stats(12, 2014)
+      expect(a_get("/nfl/v2/XML/FantasyDefenseByGame/2014/12")).to have_been_made
+    end
+
+    it "returns player data" do
+      defenses = @client.daily_fantasy_defense_game_stats(12, 2014)
+
+      expect(defenses).to be_an Array
+      expect(defenses.first.scoring_details).to be_an Array
+
+      expect(defenses.first.team).to eq 'BAL'
+      expect(defenses.first.scoring_details.first.game_key).to eq "201411222"
     end
   end
 

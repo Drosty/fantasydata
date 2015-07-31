@@ -13,6 +13,8 @@ require 'fantasydata/stadium'
 require 'fantasydata/standings'
 require 'fantasydata/error'
 require 'fantasydata/version'
+require 'fantasydata/daily_fantasy_player_stats'
+
 
 module Fantasydata
   class << self
