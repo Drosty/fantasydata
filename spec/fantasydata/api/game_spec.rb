@@ -59,4 +59,26 @@ describe Fantasydata::API::Game do
     end
   end
 
+  describe '#game_stats_by_season' do
+    before do
+      stub_get("/nfl/v2/JSON/GameStats/2014").
+      to_return(:body => fixture("game/game_stats_by_season.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.game_stats_by_season(2014)
+      expect(a_get("/nfl/v2/JSON/GameStats/2014")).to have_been_made
+    end
+
+    it "returns game stats" do
+      game_stats = @client.game_stats_by_season(2014)
+      expect(game_stats).to be_an Array
+      expect(game_stats.first.game_key).to eq '201410130'
+      expect(game_stats.first.home_punt_net_yards).to eq 66
+      expect(game_stats.first.stadium).to be_an Fantasydata::Stadium
+      expect(game_stats.first.stadium.stadium_id).to eq 31
+    end
+  end
+
 end
