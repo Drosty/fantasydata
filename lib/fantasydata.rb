@@ -10,6 +10,7 @@ require 'fantasydata/season_stats'
 require 'fantasydata/scoring_detail'
 require 'fantasydata/team_detail'
 require 'fantasydata/stadium'
+require 'fantasydata/standings'
 require 'fantasydata/error'
 require 'fantasydata/version'
 
