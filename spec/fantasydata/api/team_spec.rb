@@ -28,6 +28,28 @@ describe Fantasydata::API::Team do
     end
   end
 
+  describe '#teams_by_year' do
+    before do
+      stub_get("/nfl/v2/JSON/Teams/2012").
+      to_return(:body => fixture("team/by_year.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.teams_by_year '2012'
+      expect(a_get("/nfl/v2/JSON/Teams/2012")).to have_been_made
+    end
+
+    it "returns active teams" do
+      teams = @client.teams_by_year '2012'
+
+      expect(teams).to be_an Array
+      expect(teams.first.stadium.stadium_id).to eq 7
+      expect(teams.first.key).to eq 'BAL'
+    end
+  end
+
+  
 
 end
 
