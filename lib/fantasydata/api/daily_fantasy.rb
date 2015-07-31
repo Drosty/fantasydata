@@ -48,9 +48,8 @@ module Fantasydata
       end
 
       def daily_fantasy_defense_season_projected_stats year
-
+        objects_from_response(Fantasydata::DailyFantasyPlayerStats, :get, "/nfl/v2/JSON/FantasyDefenseProjectionsBySeason/#{year}")
       end
-
 
       private
 
