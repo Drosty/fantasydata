@@ -50,6 +50,16 @@ module Fantasydata
         response = send(request_method.to_sym, path)
         response[:body] == SUCCESS
       end
+
+      # @param klass [Class]
+      # @param request_method [Symbol]
+      # @param path [String]
+      # @param options [Hash]
+      # @return [Object]
+      def integer_from_response(request_method, path)
+        response = send(request_method.to_sym, path)
+        response[:body].to_i
+      end
     end
   end
 end
