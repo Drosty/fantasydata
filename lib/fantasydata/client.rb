@@ -10,6 +10,7 @@ require 'fantasydata/api/week'
 require 'fantasydata/api/team'
 require 'fantasydata/api/stadium'
 require 'fantasydata/api/standings'
+require 'fantasydata/api/player_stat'
 require 'fantasydata/api/daily_fantasy'
 
 module Fantasydata
@@ -20,6 +21,7 @@ module Fantasydata
     include Fantasydata::API::DailyFantasy
     include Fantasydata::API::News
     include Fantasydata::API::PlayerDetails
+    include Fantasydata::API::PlayerStat
     include Fantasydata::API::Team
     include Fantasydata::API::Stadium
     include Fantasydata::API::Standings
