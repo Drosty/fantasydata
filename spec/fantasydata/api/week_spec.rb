@@ -13,7 +13,7 @@ describe Fantasydata::API::DailyFantasy do
                  :headers => {:content_type => "application/json; charset=utf-8"})
     end
 
-    it "requests correct resource - pass string" do
+    it "requests correct resource" do
       @client.week_current
       expect(a_get("/nfl/v2/JSON/CurrentWeek")).to have_been_made
     end
@@ -33,7 +33,7 @@ describe Fantasydata::API::DailyFantasy do
                  :headers => {:content_type => "application/json; charset=utf-8"})
     end
 
-    it "requests correct resource - pass string" do
+    it "requests correct resource" do
       @client.week_last_completed
       expect(a_get("/nfl/v2/JSON/LastCompletedWeek")).to have_been_made
     end
@@ -46,7 +46,24 @@ describe Fantasydata::API::DailyFantasy do
     end
   end
 
+  describe '#week_upcoming' do
+    before do
+      stub_get("/nfl/v2/XML/UpcomingWeek").
+      to_return(:body => fixture("week/upcoming.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
 
-  
+    it "requests correct resource" do
+      @client.week_upcoming
+      expect(a_get("/nfl/v2/XML/UpcomingWeek")).to have_been_made
+    end
+
+    it "returns player details" do
+      current_week = @client.week_upcoming
+
+      expect(current_week).to be_an Integer
+      expect(current_week).to eq 9
+    end
+  end
 
 end
