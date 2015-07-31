@@ -48,4 +48,24 @@ describe Fantasydata::API::PlayerStat do
     end
   end
 
+  describe '#player_stat_by_week_and_team' do
+    before do
+      stub_get("/nfl/v2/JSON/PlayerGameStatsByTeam/2014/12/MIN").
+      to_return(:body => fixture("player_stat/stat_by_week_and_team.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.player_stat_by_week_and_team(2014, 12, 'MIN')
+      expect(a_get("/nfl/v2/JSON/PlayerGameStatsByTeam/2014/12/MIN")).to have_been_made
+    end
+
+    it "returns player details" do
+      stat = @client.player_stat_by_week_and_team(2014, 12, 'MIN')
+
+      expect(stat).to be_an Array
+      expect(stat.first.player_id).to eq 14463
+    end
+  end
+
 end

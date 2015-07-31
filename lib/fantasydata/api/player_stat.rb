@@ -10,9 +10,13 @@ module Fantasydata
       end
 
       def player_stat_by_week_projection year, week, player_id
-        object_from_response(Fantasydata::PlayerStat, :get, "http://api.nfldata.apiphany.com/nfl/v2/JSON/PlayerGameProjectionStatsByPlayerID/#{year}/#{week}/#{player_id}")
+        object_from_response(Fantasydata::PlayerStat, :get, "/nfl/v2/JSON/PlayerGameProjectionStatsByPlayerID/#{year}/#{week}/#{player_id}")
       end
-      
+
+      def player_stat_by_week_and_team year, week, team_name
+        objects_from_response(Fantasydata::PlayerStat, :get, "/nfl/v2/JSON/PlayerGameStatsByTeam/#{year}/#{week}/#{team_name}")
+      end
+
     end
   end
 end
