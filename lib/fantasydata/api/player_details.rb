@@ -14,6 +14,7 @@ module Fantasydata
       end
 
       def player_details_by_team(team_name)
+        objects_from_response(Fantasydata::PlayerDetail, :get, "/nfl/v2/JSON/Players/#{team_name}")
       end
 
       def player_details_by_player_id(player_id)

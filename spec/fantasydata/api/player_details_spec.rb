@@ -75,6 +75,33 @@ describe Fantasydata::API::DailyFantasy do
     end
   end
 
-  
+  describe '#player_details_freeagents_spec' do
+    before do
+      stub_get("/nfl/v2/JSON/Players/MIN").
+      to_return(:body => fixture("player_details/by_team.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource - pass string" do
+      @client.player_details_by_team('MIN')
+      expect(a_get("/nfl/v2/JSON/Players/MIN")).to have_been_made
+    end
+
+    it "returns player details and related data" do
+      player = @client.player_details_by_team('MIN')
+
+      expect(player).to be_an Array
+      expect(player.first.player_id).to eq 11323
+
+      expect(player.first.season_stats).to be_an Fantasydata::SeasonStats
+      expect(player.first.season_stats.fumbles).to eq 0
+
+      expect(player.first.season_stats.scoring_details).to be_an Array
+      expect(player.first.season_stats.scoring_details.count).to eq 0
+
+      expect(player.first.latest_news).to be_an Array
+      expect(player.first.latest_news.first.news_id).to eq 5812
+    end
+  end
 
 end
