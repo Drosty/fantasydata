@@ -84,12 +84,12 @@ describe Fantasydata::API::DailyFantasy do
     end
 
     it "requests correct resource" do
-      @client.daily_fantasy_defense_game_stats(12, 2014)
+      @client.daily_fantasy_defense_game_stats(2014, 12)
       expect(a_get("/nfl/v2/JSON/FantasyDefenseByGame/2014/12")).to have_been_made
     end
 
     it "returns player data" do
-      defenses = @client.daily_fantasy_defense_game_stats(12, 2014)
+      defenses = @client.daily_fantasy_defense_game_stats(2014, 12)
 
       expect(defenses).to be_an Array
       expect(defenses.first.scoring_details).to be_an Array
@@ -107,12 +107,12 @@ describe Fantasydata::API::DailyFantasy do
     end
 
     it "requests correct resource" do
-      @client.daily_fantasy_defense_game_projected_stats(12, 2014)
+      @client.daily_fantasy_defense_game_projected_stats(2014, 12)
       expect(a_get("/nfl/v2/JSON/FantasyDefenseProjectionsByGame/2014/12")).to have_been_made
     end
 
     it "returns player data" do
-      defenses = @client.daily_fantasy_defense_game_projected_stats(12, 2014)
+      defenses = @client.daily_fantasy_defense_game_projected_stats(2014, 12)
 
       expect(defenses).to be_an Array
       expect(defenses.first.scoring_details).to be_an Array
