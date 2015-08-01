@@ -165,4 +165,25 @@ describe Fantasydata::API::DailyFantasy do
     end
   end
 
+  describe '#fantasy_players_adp' do
+    before do
+      stub_get("/nfl/v2/JSON/FantasyPlayers").
+      to_return(:body => fixture("daily_fantasy/adp.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.fantasy_players_adp
+      expect(a_get("/nfl/v2/JSON/FantasyPlayers")).to have_been_made
+    end
+
+    it "returns player data" do
+      adps = @client.fantasy_players_adp
+      expect(adps).to be_an Array
+      expect(adps.first.player_id).to eq 4807
+      expect(adps.first.fantasy_player_key).to eq "4807"
+    end
+  end
+
+
 end

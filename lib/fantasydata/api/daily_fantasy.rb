@@ -51,6 +51,10 @@ module Fantasydata
         objects_from_response(Fantasydata::DailyFantasyPlayerStats, :get, "/nfl/v2/JSON/FantasyDefenseProjectionsBySeason/#{year}")
       end
 
+      def fantasy_players_adp
+        objects_from_response(Fantasydata::FantasyPlayerAdp, :get, "/nfl/v2/JSON/FantasyPlayers")
+      end
+
       private
 
         def convert_to_date input
