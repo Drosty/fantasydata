@@ -13,7 +13,7 @@ module Fantasydata
 
 
     def stadium
-      @Stadium ||= Fantasydata::Stadium.new(@attrs[:stadium_details])
+      @stadium ||= Fantasydata::Stadium.new(@attrs[:stadium_details])
     end
 
   end
