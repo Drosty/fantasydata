@@ -21,6 +21,9 @@ module Fantasydata
         objects_from_response(Fantasydata::PlayerGameStat, :get, "/nfl/v2/JSON/PlayerGameProjectionStatsByTeam/#{year}/#{week}/#{team_name}")
       end
 
+      def player_game_stat_by_week year, week
+        objects_from_response(Fantasydata::PlayerGameStat, :get, "/nfl/v2/JSON/PlayerGameStatsByWeek/#{year}/#{week}")
+      end
     end
   end
 end
