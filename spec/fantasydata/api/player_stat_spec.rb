@@ -48,7 +48,7 @@ describe Fantasydata::API::PlayerStat do
     end
   end
 
-  describe '#player_game_stat_by_week_and_team' do
+  describe '#player_game_stats_by_week_and_team' do
     before do
       stub_get("/nfl/v2/JSON/PlayerGameStatsByTeam/2014/12/MIN").
       to_return(:body => fixture("player_stat/stat_by_week_and_team.json"),
@@ -56,12 +56,12 @@ describe Fantasydata::API::PlayerStat do
     end
 
     it "requests correct resource" do
-      @client.player_game_stat_by_week_and_team(2014, 12, 'MIN')
+      @client.player_game_stats_by_week_and_team(2014, 12, 'MIN')
       expect(a_get("/nfl/v2/JSON/PlayerGameStatsByTeam/2014/12/MIN")).to have_been_made
     end
 
     it "returns player details" do
-      stat = @client.player_game_stat_by_week_and_team(2014, 12, 'MIN')
+      stat = @client.player_game_stats_by_week_and_team(2014, 12, 'MIN')
 
       expect(stat).to be_an Array
       expect(stat.first).to be_an Fantasydata::PlayerGameStat
@@ -69,7 +69,7 @@ describe Fantasydata::API::PlayerStat do
     end
   end
 
-  describe '#player_game_stat_by_week_and_team_projection' do
+  describe '#player_game_stats_by_week_and_team_projection' do
     before do
       stub_get("/nfl/v2/JSON/PlayerGameProjectionStatsByTeam/2014/12/MIN").
       to_return(:body => fixture("player_stat/stat_by_week_and_team_projected.json"),
@@ -77,12 +77,12 @@ describe Fantasydata::API::PlayerStat do
     end
 
     it "requests correct resource" do
-      @client.player_game_stat_by_week_and_team_projection(2014, 12, 'MIN')
+      @client.player_game_stats_by_week_and_team_projection(2014, 12, 'MIN')
       expect(a_get("/nfl/v2/JSON/PlayerGameProjectionStatsByTeam/2014/12/MIN")).to have_been_made
     end
 
     it "returns player details" do
-      stat = @client.player_game_stat_by_week_and_team_projection(2014, 12, 'MIN')
+      stat = @client.player_game_stats_by_week_and_team_projection(2014, 12, 'MIN')
 
       expect(stat).to be_an Array
       expect(stat.first).to be_an Fantasydata::PlayerGameStat
@@ -91,7 +91,7 @@ describe Fantasydata::API::PlayerStat do
     end
   end
 
-  describe '#player_game_stat_by_week' do
+  describe '#player_game_stats_by_week' do
     before do
       stub_get("/nfl/v2/JSON/PlayerGameStatsByWeek/2014/13").
       to_return(:body => fixture("player_stat/stat_by_week.json"),
@@ -99,12 +99,34 @@ describe Fantasydata::API::PlayerStat do
     end
 
     it "requests correct resource" do
-      @client.player_game_stat_by_week(2014, 13)
+      @client.player_game_stats_by_week(2014, 13)
       expect(a_get("/nfl/v2/JSON/PlayerGameStatsByWeek/2014/13")).to have_been_made
     end
 
     it "returns player details" do
-      stat = @client.player_game_stat_by_week(2014, 13)
+      stat = @client.player_game_stats_by_week(2014, 13)
+
+      expect(stat).to be_an Array
+      expect(stat.first).to be_an Fantasydata::PlayerGameStat
+      expect(stat.first.player_id).to eq 7295
+      expect(stat.first.stadium).to eq "Lucas Oil Stadium"
+    end
+  end
+
+  describe '#player_game_stat_by_delta' do
+    before do
+      stub_get("/nfl/v2/JSON/PlayerGameStatsDelta/4").
+      to_return(:body => fixture("player_stat/stat_by_delta.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.player_game_stats_by_delta(4)
+      expect(a_get("/nfl/v2/JSON/PlayerGameStatsDelta/4")).to have_been_made
+    end
+
+    it "returns player details" do
+      stat = @client.player_game_stats_by_delta(4)
 
       expect(stat).to be_an Array
       expect(stat.first).to be_an Fantasydata::PlayerGameStat

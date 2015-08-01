@@ -13,16 +13,20 @@ module Fantasydata
         object_from_response(Fantasydata::PlayerGameStat, :get, "/nfl/v2/JSON/PlayerGameProjectionStatsByPlayerID/#{year}/#{week}/#{player_id}")
       end
 
-      def player_game_stat_by_week_and_team year, week, team_name
+      def player_game_stats_by_week_and_team year, week, team_name
         objects_from_response(Fantasydata::PlayerGameStat, :get, "/nfl/v2/JSON/PlayerGameStatsByTeam/#{year}/#{week}/#{team_name}")
       end
 
-      def player_game_stat_by_week_and_team_projection year, week, team_name
+      def player_game_stats_by_week_and_team_projection year, week, team_name
         objects_from_response(Fantasydata::PlayerGameStat, :get, "/nfl/v2/JSON/PlayerGameProjectionStatsByTeam/#{year}/#{week}/#{team_name}")
       end
 
-      def player_game_stat_by_week year, week
+      def player_game_stats_by_week year, week
         objects_from_response(Fantasydata::PlayerGameStat, :get, "/nfl/v2/JSON/PlayerGameStatsByWeek/#{year}/#{week}")
+      end
+
+      def player_game_stats_by_delta minutes
+        objects_from_response(Fantasydata::PlayerGameStat, :get, "/nfl/v2/JSON/PlayerGameStatsDelta/#{minutes}")
       end
     end
   end
