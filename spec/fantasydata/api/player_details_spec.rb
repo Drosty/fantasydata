@@ -64,7 +64,7 @@ describe Fantasydata::API::Stadium do
       expect(player).to be_an Fantasydata::PlayerDetail
       expect(player.player_id).to eq 7328
 
-      expect(player.season_stats).to be_an Fantasydata::SeasonStats
+      expect(player.season_stats).to be_an Fantasydata::PlayerSeasonStat
       expect(player.season_stats.fumbles).to eq 5
 
       expect(player.season_stats.scoring_details).to be_an Array
@@ -93,7 +93,7 @@ describe Fantasydata::API::Stadium do
       expect(player).to be_an Array
       expect(player.first.player_id).to eq 11323
 
-      expect(player.first.season_stats).to be_an Fantasydata::SeasonStats
+      expect(player.first.season_stats).to be_an Fantasydata::PlayerSeasonStat
       expect(player.first.season_stats.fumbles).to eq 0
 
       expect(player.first.season_stats.scoring_details).to be_an Array

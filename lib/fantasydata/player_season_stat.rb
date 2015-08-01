@@ -1,7 +1,7 @@
 require 'fantasydata/base'
 
 module Fantasydata
-  class SeasonStats < Fantasydata::Base
+  class PlayerSeasonStat < Fantasydata::Base
     attr_reader :custom_d365_fantasy_points, :scoring_details, :player_id, 
                 :season_type, :season, :team, :number, :name, :position, 
                 :position_category, :activated, :played, :started, 

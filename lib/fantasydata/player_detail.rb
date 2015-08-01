@@ -14,9 +14,9 @@ module Fantasydata
                 :height_inches, :upcoming_opponent_rank, :upcoming_opponent_position_rank, 
                 :current_status, :upcoming_salary
 
-    # @return [Fantasydata::DocCounts]
+    # @return [Fantasydata::PlayerSeasonStat]
     def season_stats
-      @season_stats ||= Fantasydata::SeasonStats.new(@attrs[:player_season])
+      @season_stats ||= Fantasydata::PlayerSeasonStat.new(@attrs[:player_season])
     end
 
     def latest_news
