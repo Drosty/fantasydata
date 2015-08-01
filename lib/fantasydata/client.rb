@@ -11,14 +11,14 @@ require 'fantasydata/api/team'
 require 'fantasydata/api/stadium'
 require 'fantasydata/api/standings'
 require 'fantasydata/api/player_stat'
-require 'fantasydata/api/daily_fantasy'
+require 'fantasydata/api/fantasy'
 
 module Fantasydata
   class Client
     include Fantasydata::API::Game
     include Fantasydata::API::ByeWeeks
     include Fantasydata::API::BoxScore
-    include Fantasydata::API::DailyFantasy
+    include Fantasydata::API::Fantasy
     include Fantasydata::API::News
     include Fantasydata::API::PlayerDetails
     include Fantasydata::API::PlayerStat

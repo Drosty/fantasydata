@@ -2,7 +2,7 @@ require 'fantasydata/api/utils'
 
 module Fantasydata
   module API
-    module DailyFantasy
+    module Fantasy
       include Fantasydata::API::Utils
 
       # Gets daily fantasy player information for given day.
