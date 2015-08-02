@@ -14,12 +14,12 @@ describe Fantasydata::API::Week do
     end
 
     it "requests correct resource" do
-      @client.week_current
+      @client.current_week
       expect(a_get("/nfl/v2/JSON/CurrentWeek")).to have_been_made
     end
 
     it "returns player details" do
-      current_week = @client.week_current
+      current_week = @client.current_week
 
       expect(current_week).to be_an Integer
       expect(current_week).to eq 16
@@ -34,15 +34,15 @@ describe Fantasydata::API::Week do
     end
 
     it "requests correct resource" do
-      @client.week_last_completed
+      @client.last_completed_week
       expect(a_get("/nfl/v2/JSON/LastCompletedWeek")).to have_been_made
     end
 
     it "returns player details" do
-      current_week = @client.week_last_completed
+      week = @client.last_completed_week
 
-      expect(current_week).to be_an Integer
-      expect(current_week).to eq 4
+      expect(week).to be_an Integer
+      expect(week).to eq 4
     end
   end
 
@@ -54,12 +54,12 @@ describe Fantasydata::API::Week do
     end
 
     it "requests correct resource" do
-      @client.week_upcoming
+      @client.upcoming_week
       expect(a_get("/nfl/v2/XML/UpcomingWeek")).to have_been_made
     end
 
     it "returns player details" do
-      current_week = @client.week_upcoming
+      current_week = @client.upcoming_week
 
       expect(current_week).to be_an Integer
       expect(current_week).to eq 9

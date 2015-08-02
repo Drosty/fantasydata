@@ -5,15 +5,15 @@ module Fantasydata
     module Week
       include Fantasydata::API::Utils
 
-      def week_current
+      def current_week
         integer_from_response(:get, '/nfl/v2/JSON/CurrentWeek')
       end
 
-      def week_last_completed
+      def last_completed_week
         integer_from_response(:get, '/nfl/v2/JSON/LastCompletedWeek')
       end
 
-      def week_upcoming
+      def upcoming_week
         integer_from_response(:get, '/nfl/v2/XML/UpcomingWeek')
       end
 
