@@ -2,7 +2,7 @@
 
 Check https://github.com/Drosty/fantasydata/wiki/Checklist for status on completed and incomplete endpoints.
 
-[![Build Status](https://travis-ci.org/Drosty/fantasydata.svg?branch=master)](https://travis-ci.org/Drosty/fantasydata)[![Code Climate](https://codeclimate.com/github/Drosty/fantasydata/badges/gpa.svg)](https://codeclimate.com/github/Drosty/fantasydata)[![Test Coverage](https://codeclimate.com/github/Drosty/fantasydata/badges/coverage.svg)](https://codeclimate.com/github/Drosty/fantasydata/coverage)
+[![Gem Version](https://badge.fury.io/rb/fantasydata.svg)](http://badge.fury.io/rb/fantasydata)[![Build Status](https://travis-ci.org/Drosty/fantasydata.svg?branch=master)](https://travis-ci.org/Drosty/fantasydata)[![Code Climate](https://codeclimate.com/github/Drosty/fantasydata/badges/gpa.svg)](https://codeclimate.com/github/Drosty/fantasydata)[![Test Coverage](https://codeclimate.com/github/Drosty/fantasydata/badges/coverage.svg)](https://codeclimate.com/github/Drosty/fantasydata/coverage)
 
 
 A Ruby interface to the Fantasy Data API.  The Fantasy Data API delivery historical and up to the second NFL, NBA and MLB data.  This gem currently only supports the NFL Data but could be expanded to include the others as well.  Details about the API can be found here: https://developer.fantasydata.com/documentation
