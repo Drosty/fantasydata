@@ -49,8 +49,27 @@ describe Fantasydata::API::Team do
     end
   end
 
-  
+  describe '#teams_stats_by_year_and_week' do
+    before do
+      stub_get("/nfl/v2/JSON/TeamGameStats/2014/1").
+      to_return(:body => fixture("team/week_stats.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.team_game_stats_by_year_and_week(2014, 1)
+      expect(a_get("/nfl/v2/JSON/TeamGameStats/2014/1")).to have_been_made
+    end
+
+    it "returns active teams" do
+      teams = @client.team_game_stats_by_year_and_week(2014, 1)
+
+      expect(teams).to be_an Array
+      expect(teams.first).to be_an Fantasydata::TeamGameStat
+      expect(teams.first.day_of_week).to eq 'Monday'
+      expect(teams.first.punt_net_yards).to eq 129
+      expect(teams.first.game_key).to eq '201410101'
+    end
+  end
 
 end
-
-
