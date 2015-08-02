@@ -43,6 +43,11 @@ module Fantasydata
       def player_season_stat_by_player_id_projection year, player_id
         object_from_response(Fantasydata::PlayerSeasonStat, :get, "/nfl/v2/JSON/PlayerSeasonProjectionStatsByPlayerID/#{year}/#{player_id}")
       end
+
+      def player_season_stat_by_team year, team
+        objects_from_response(Fantasydata::PlayerSeasonStat, :get, "/nfl/v2/JSON/PlayerSeasonStatsByTeam/#{year}/#{team}")
+      end
+
     end
   end
 end
