@@ -5,6 +5,7 @@ require 'fantasydata/api/game'
 require 'fantasydata/api/box_score'
 require 'fantasydata/api/bye_weeks'
 require 'fantasydata/api/player_details'
+require 'fantasydata/api/injury'
 require 'fantasydata/api/news'
 require 'fantasydata/api/week'
 require 'fantasydata/api/team'
@@ -21,6 +22,7 @@ module Fantasydata
     include Fantasydata::API::ByeWeeks
     include Fantasydata::API::BoxScore
     include Fantasydata::API::Fantasy
+    include Fantasydata::API::Injury
     include Fantasydata::API::News
     include Fantasydata::API::PlayerDetails
     include Fantasydata::API::PlayerStat
