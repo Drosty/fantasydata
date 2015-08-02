@@ -72,4 +72,26 @@ describe Fantasydata::API::Team do
     end
   end
 
+  describe '#teams_stats_by_season' do
+    before do
+      stub_get("/nfl/v2/JSON/TeamSeasonStats/2012").
+      to_return(:body => fixture("team/season_stats.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.team_game_stats_by_season(2012)
+      expect(a_get("/nfl/v2/JSON/TeamSeasonStats/2012")).to have_been_made
+    end
+
+    it "returns active teams" do
+      teams = @client.team_game_stats_by_season(2012)
+
+      expect(teams).to be_an Array
+      expect(teams.first).to be_an Fantasydata::TeamSeasonStat
+      expect(teams.first.penalties).to eq 102
+      expect(teams.first.punt_net_yards).to eq 4634
+    end
+  end
+
 end
