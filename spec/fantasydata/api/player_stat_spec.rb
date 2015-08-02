@@ -6,6 +6,13 @@ describe Fantasydata::API::PlayerStat do
     @client = new_test_client
   end
 
+  ######################
+  #
+  # PLAYER GAME STATS
+  #
+  ######################
+
+
   describe '#player_game_stat_by_player' do
     before do
       stub_get("/nfl/v2/JSON/PlayerGameStatsByPlayerID/2014/12/7328").
@@ -132,6 +139,34 @@ describe Fantasydata::API::PlayerStat do
       expect(stat.first).to be_an Fantasydata::PlayerGameStat
       expect(stat.first.player_id).to eq 7295
       expect(stat.first.stadium).to eq "Lucas Oil Stadium"
+    end
+  end
+
+  ######################
+  #
+  # PLAYER SEASON STATS
+  #
+  ######################
+
+  describe '#player_game_stat_by_delta' do
+    before do
+      stub_get("/nfl/v2/JSON/PlayerSeasonProjectionStats/2014").
+      to_return(:body => fixture("player_stat/season_stat_by_season_projection.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.player_season_stats_by_year_projection(2014)
+      expect(a_get("/nfl/v2/JSON/PlayerSeasonProjectionStats/2014")).to have_been_made
+    end
+
+    it "returns player details" do
+      stats = @client.player_season_stats_by_year_projection(2014)
+
+      expect(stats).to be_an Array
+      expect(stats.first).to be_an Fantasydata::PlayerSeasonStat
+      expect(stats.first.player_id).to eq 2428
+      expect(stats.first.player_season_id).to eq 0
     end
   end
 

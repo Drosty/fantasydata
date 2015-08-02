@@ -28,6 +28,10 @@ module Fantasydata
       def player_game_stats_by_delta minutes
         objects_from_response(Fantasydata::PlayerGameStat, :get, "/nfl/v2/JSON/PlayerGameStatsDelta/#{minutes}")
       end
+
+      def player_season_stats_by_year_projection year
+        objects_from_response(Fantasydata::PlayerSeasonStat, :get, "/nfl/v2/JSON/PlayerSeasonProjectionStats/#{year}")
+      end
     end
   end
 end
