@@ -5,16 +5,17 @@ require 'fantasydata/api/game'
 require 'fantasydata/api/box_score'
 require 'fantasydata/api/bye_weeks'
 require 'fantasydata/api/player_details'
+require 'fantasydata/api/fantasy'
 require 'fantasydata/api/injury'
 require 'fantasydata/api/news'
 require 'fantasydata/api/week'
 require 'fantasydata/api/team'
+require 'fantasydata/api/player_stat'
 require 'fantasydata/api/schedule'
 require 'fantasydata/api/season'
 require 'fantasydata/api/stadium'
 require 'fantasydata/api/standings'
-require 'fantasydata/api/player_stat'
-require 'fantasydata/api/fantasy'
+require 'fantasydata/api/timeline'
 
 module Fantasydata
   class Client
@@ -31,6 +32,7 @@ module Fantasydata
     include Fantasydata::API::Schedule
     include Fantasydata::API::Stadium
     include Fantasydata::API::Standings
+    include Fantasydata::API::Timeline
     include Fantasydata::API::Week
     include Fantasydata::Configurable
 
