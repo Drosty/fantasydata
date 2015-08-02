@@ -191,4 +191,25 @@ describe Fantasydata::API::PlayerStat do
     end
   end
 
+  describe '#player_season_stat_by_player_id_projection' do
+    before do
+      stub_get("/nfl/v2/JSON/PlayerSeasonProjectionStatsByPlayerID/2014/2429").
+      to_return(:body => fixture("player_stat/season_stat_by_player_id_projection.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.player_season_stat_by_player_id_projection(2014, 2429)
+      expect(a_get("/nfl/v2/JSON/PlayerSeasonProjectionStatsByPlayerID/2014/2429")).to have_been_made
+    end
+
+    it "returns player details" do
+      stats = @client.player_season_stat_by_player_id_projection(2014, 2429)
+
+      expect(stats).to be_an Fantasydata::PlayerSeasonStat
+      expect(stats.player_id).to eq 2429
+      expect(stats.player_season_id).to eq 0
+    end
+  end
+
 end
