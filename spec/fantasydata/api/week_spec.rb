@@ -18,7 +18,7 @@ describe Fantasydata::API::Week do
       expect(a_get("/nfl/v2/JSON/CurrentWeek")).to have_been_made
     end
 
-    it "returns player details" do
+    it "returns current week" do
       current_week = @client.current_week
 
       expect(current_week).to be_an Integer
@@ -38,7 +38,7 @@ describe Fantasydata::API::Week do
       expect(a_get("/nfl/v2/JSON/LastCompletedWeek")).to have_been_made
     end
 
-    it "returns player details" do
+    it "returns last completed week" do
       week = @client.last_completed_week
 
       expect(week).to be_an Integer
@@ -48,17 +48,17 @@ describe Fantasydata::API::Week do
 
   describe '#week_upcoming' do
     before do
-      stub_get("/nfl/v2/XML/UpcomingWeek").
+      stub_get("/nfl/v2/JSON/UpcomingWeek").
       to_return(:body => fixture("week/upcoming.json"),
                  :headers => {:content_type => "application/json; charset=utf-8"})
     end
 
     it "requests correct resource" do
       @client.upcoming_week
-      expect(a_get("/nfl/v2/XML/UpcomingWeek")).to have_been_made
+      expect(a_get("/nfl/v2/JSON/UpcomingWeek")).to have_been_made
     end
 
-    it "returns player details" do
+    it "returns upcoming week" do
       current_week = @client.upcoming_week
 
       expect(current_week).to be_an Integer

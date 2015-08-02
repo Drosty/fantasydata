@@ -14,7 +14,7 @@ module Fantasydata
       end
 
       def upcoming_week
-        integer_from_response(:get, '/nfl/v2/XML/UpcomingWeek')
+        integer_from_response(:get, '/nfl/v2/JSON/UpcomingWeek')
       end
 
     end
