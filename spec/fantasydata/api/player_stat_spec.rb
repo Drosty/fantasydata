@@ -148,7 +148,7 @@ describe Fantasydata::API::PlayerStat do
   #
   ######################
 
-  describe '#player_game_stat_by_delta' do
+  describe '#player_season_stats_by_year_projection' do
     before do
       stub_get("/nfl/v2/JSON/PlayerSeasonProjectionStats/2014").
       to_return(:body => fixture("player_stat/season_stat_by_season_projection.json"),
