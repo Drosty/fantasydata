@@ -32,6 +32,13 @@ module Fantasydata
       def player_season_stats_by_year_projection year
         objects_from_response(Fantasydata::PlayerSeasonStat, :get, "/nfl/v2/JSON/PlayerSeasonProjectionStats/#{year}")
       end
+
+      def player_season_stat_by_player_id year, player_id
+        # This endpoint returns an array - but there will always only be one.
+        # API will just return the first one to have the object and not an array
+        items = objects_from_response(Fantasydata::PlayerSeasonStat, :get, "/nfl/v2/JSON/PlayerSeasonStatsByPlayerID/#{year}/#{player_id}")
+        items.first
+      end
     end
   end
 end
