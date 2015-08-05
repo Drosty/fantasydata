@@ -13,6 +13,7 @@ require 'fantasydata/api/week'
 require 'fantasydata/api/team'
 require 'fantasydata/api/player_stat'
 require 'fantasydata/api/schedule'
+require 'fantasydata/api/score'
 require 'fantasydata/api/season'
 require 'fantasydata/api/stadium'
 require 'fantasydata/api/standings'
@@ -31,6 +32,7 @@ module Fantasydata
     include Fantasydata::API::PlayerStat
     include Fantasydata::API::Team
     include Fantasydata::API::Season
+    include Fantasydata::API::Score
     include Fantasydata::API::Schedule
     include Fantasydata::API::Stadium
     include Fantasydata::API::Standings
