@@ -26,4 +26,25 @@ describe Fantasydata::API::LeagueLeaders do
     end
   end
 
+  describe '#league_leaders_by_week' do
+    before do
+      stub_get("/nfl/v2/JSON/GameLeagueLeaders/2014/11/OFFENSE/FantasyPoints").
+      to_return(:body => fixture("league_leaders/by_week.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.league_leaders_by_week(2014, 11, 'offense', 'FantasyPoints')
+      expect(a_get("/nfl/v2/JSON/GameLeagueLeaders/2014/11/OFFENSE/FantasyPoints")).to have_been_made
+    end
+
+    it "returns league leaders" do
+      leaders = @client.league_leaders_by_week(2014, 11, 'offense', 'FantasyPoints')
+      expect(leaders).to be_an Array
+      expect(leaders.first).to be_an Fantasydata::PlayerGameStat
+      expect(leaders.first.player_id).to eq 15565
+      expect(leaders.first.game_key).to eq '201411114'
+    end
+  end
+
 end
