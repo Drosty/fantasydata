@@ -43,7 +43,7 @@ Or install it yourself as:
 
 ## Usage
 
-Go to [Fantasy Data](http://www.fantasydata.com]) and sign up for an account to get an API Key.
+Go to [Fantasy Data](http://www.fantasydata.com) and sign up for an account to get an API Key.
 
 Then copy and paste in your API keys:
 
