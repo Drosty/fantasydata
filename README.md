@@ -10,6 +10,16 @@ I relied heavily on the [Echowrap](https://github.com/timcase/echowrap) gem to f
 
 ## Supported Rubies
 
+The following Ruby versions are tested in Travis CI:
+  - 2.2.2
+  - 2.2.0
+  - 2.1.5
+  - 2.0.0
+  - 1.9.3
+  - jruby-19mode
+  - rbx-18mode
+  - rbx-19mode
+
 ## Gem Dependencies
 
 Installing this gem also installs the following gems:
