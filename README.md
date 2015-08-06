@@ -5,20 +5,17 @@
 
 A Ruby interface to the Fantasy Data API.  The Fantasy Data API delivery historical and up to the second NFL, NBA and MLB data.  This gem currently only supports the NFL Data but could be expanded to include the others as well.  Details about the API can be found here: [https://developer.fantasydata.com/documentation](https://developer.fantasydata.com/documentation).  For a Implementation guide check out this page: [http://fantasydata.com/resources/implementation-guide.aspx](http://fantasydata.com/resources/implementation-guide.aspx).
 
-## Inspiration
-I relied heavily on the [Echowrap](https://github.com/timcase/echowrap) gem to follow best practices around the structure of the gem, tests and documentation.
-
 ## Supported Rubies
 
 The following Ruby versions are tested in [Travis CI](https://travis-ci.org/Drosty/fantasydata):
-  - 2.2.2
-  - 2.2.0
-  - 2.1.5
-  - 2.0.0
-  - 1.9.3
-  - jruby-19mode
-  - rbx-18mode
-  - rbx-19mode
+ * 2.2.2
+ * 2.2.0
+ * 2.1.5
+ * 2.0.0
+ * 1.9.3
+ * jruby-19mode
+ * rbx-18mode
+ * rbx-19mode
 
 ## Gem Dependencies
 
@@ -67,3 +64,7 @@ Fantasydata.current_week
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Inspiration
+
+This gem relied heavily on the [Echowrap](https://github.com/timcase/echowrap) gem to follow best practices around the structure of the gem, tests and documentation.
