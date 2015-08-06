@@ -10,7 +10,7 @@ I relied heavily on the [Echowrap](https://github.com/timcase/echowrap) gem to f
 
 ## Supported Rubies
 
-The following Ruby versions are tested in Travis CI:
+The following Ruby versions are tested in [Travis CI](https://travis-ci.org/Drosty/fantasydata):
   - 2.2.2
   - 2.2.0
   - 2.1.5
@@ -43,7 +43,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Go to [Fantasy Data](http://www.fantasydata.com]) and sign up for an account to get an API Key.
+
+Then copy and paste in your API keys:
+
+```ruby
+Fantasydata.configure do |config|
+  config.api_key =       'YOUR_API_KEY'
+end
+```
+If you are using Fantasydata with a Rails application then a good location for the key would be to create an initializer, for example you could place the above code in /config/initializers/fantasydata.rb.
+
+You can now use Fantasydata like this:
+
+```ruby
+Fantasydata.current_week
+```
 
 ## Contributing
 
