@@ -77,7 +77,7 @@ module Fantasydata
       # @example box_scores_delta_current_week
       #   Fantasydata.box_scores_delta_current_week(5)
       def box_scores_delta_current_week(minutes)
-
+        objects_from_response(Fantasydata::BoxScore, :get, "/nfl/v2/JSON/RecentlyUpdatedBoxScores/#{minutes}")
       end
 
       #
