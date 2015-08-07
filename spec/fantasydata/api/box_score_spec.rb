@@ -126,4 +126,30 @@ describe Fantasydata::API::BoxScore do
     end
   end
 
+  
+  describe '#box_score_by_week' do
+    before do
+      stub_get("/nfl/v2/JSON/ActiveBoxScores").
+      to_return(:body => fixture("box_score/active.json"),
+                 :headers => {:content_type => "application/json; charset=utf-8"})
+    end
+
+    it "requests correct resource" do
+      @client.box_scores_active
+      expect(a_get("/nfl/v2/JSON/ActiveBoxScores")).to have_been_made
+    end
+
+    it "returns byeweeks" do
+      box_scores = @client.box_scores_active
+
+      expect(box_scores).to be_an Array
+
+      expect(box_scores.count).to eq 3
+      expect(box_scores.first).to be_an Fantasydata::BoxScore
+      expect(box_scores.first.away_defense).to be_an Array
+      expect(box_scores.first.away_defense.first).to be_an Fantasydata::Boxscore::PlayerDefenseStat
+      expect(box_scores.first.away_defense.first.player_game_id).to eq 5915351
+    end
+  end
+
 end

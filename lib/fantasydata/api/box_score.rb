@@ -47,6 +47,7 @@ module Fantasydata
       # @example box_scores_active
       #   Fantasydata.box_scores_active
       def box_scores_active
+        objects_from_response(Fantasydata::BoxScore, :get, "/nfl/v2/JSON/ActiveBoxScores")
       end
 
       # This method returns all box scores for a given season and week, but only returns player stats that have changed in the last X minutes.
