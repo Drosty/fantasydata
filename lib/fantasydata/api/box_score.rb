@@ -63,6 +63,7 @@ module Fantasydata
       # @example box_scores_delta
       #   Fantasydata.box_scores_delta('2014REG', 1, 5)
       def box_scores_delta(season, week, minutes)
+        objects_from_response(Fantasydata::BoxScore, :get, "/nfl/v2/JSON/BoxScoresDelta/#{season}/#{week}/#{minutes}")
       end
 
       # This method returns all box scores for the current week, but only returns player stats that have changed in the last X minutes.
@@ -76,6 +77,7 @@ module Fantasydata
       # @example box_scores_delta_current_week
       #   Fantasydata.box_scores_delta_current_week(5)
       def box_scores_delta_current_week(minutes)
+
       end
 
       #
