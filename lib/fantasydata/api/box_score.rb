@@ -31,9 +31,10 @@ module Fantasydata
       # @return [Array<Fantasydata::BoxScore>]
       # @param season [String] Year of the season and the season type. If no season type is provided, then the default is regular season Examples: 2015REG, 2015PRE, 2015POST, 2015
       # @param week [Integer] Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4
-      # @example box_scores_week
-      #   Fantasydata.box_scores_week('2015REG', 15)
-      def box_scores_week(season, week)
+      # @example box_scores_by_week
+      #   Fantasydata.box_scores_by_week('2015REG', 15)
+      def box_scores_by_week(season, week)
+        objects_from_response(Fantasydata::BoxScore, :get, "/nfl/v2/JSON/BoxScores/#{season}/#{week}")
       end
 
       # This method returns box scores for all games that are either in-progress or have been updated within the last 30 minutes.
