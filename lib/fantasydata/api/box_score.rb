@@ -15,9 +15,10 @@ module Fantasydata
       # @param season [String] Year of the season and the season type. If no season type is provided, then the default is regular season Examples: 2015REG, 2015PRE, 2015POST, 2015
       # @param week [Integer] Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4
       # @param hometeam [String] Abbreviation of the home team. Example: WAS
-      # @example box_score_individual_game
-      #   Fantasydata.box_score_individual_game('2015REG', 15, 'MIN')
-      def box_score_individual_game(season, week, hometeam)
+      # @example box_score_by_team
+      #   Fantasydata.box_score_by_team('2015REG', 15, 'MIN')
+      def box_score_by_team(season, week, home_team)
+        object_from_response(Fantasydata::BoxScore, :get, "/nfl/v2/JSON/BoxScore/#{season}/#{week}/#{home_team}")
       end
 
 
