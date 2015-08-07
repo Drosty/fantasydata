@@ -54,7 +54,7 @@ describe Fantasydata::API::BoxScore do
       expect(box_score.away_rushing.first).to be_an Fantasydata::Boxscore::RushingStat
       expect(box_score.away_rushing.first.player_game_id).to eq 5922970
 
-      expect(box_score.game).to be_an Fantasydata::Boxscore::GameInformation
+      expect(box_score.game).to be_an Fantasydata::GameStat
       expect(box_score.game.game_key).to eq '201211206'
 
       expect(box_score.home_defense).to be_an Array

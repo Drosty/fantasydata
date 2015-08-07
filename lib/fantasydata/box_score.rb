@@ -36,7 +36,7 @@ module Fantasydata
     end
 
     def game
-      @game ||= Fantasydata::Boxscore::GameInformation.new(@attrs[:game])
+      @game ||= Fantasydata::GameStat.new(@attrs[:game])
     end
 
     def home_defense

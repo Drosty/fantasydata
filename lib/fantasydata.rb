@@ -2,7 +2,6 @@ require "fantasydata/version"
 require 'fantasydata/client'
 require 'fantasydata/configurable'
 require 'fantasydata/box_score'
-require 'fantasydata/boxscore/game_information'
 require 'fantasydata/boxscore/kicking_stat'
 require 'fantasydata/boxscore/passing_stat'
 require 'fantasydata/boxscore/player_defense_stat'
