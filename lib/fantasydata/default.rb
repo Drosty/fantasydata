@@ -16,8 +16,8 @@ module Fantasydata
         :user_agent => "FantasyData Ruby Gem #{Fantasydata::VERSION}"
       },
       :request => {
-        :open_timeout => 5,
-        :timeout => 10,
+        :open_timeout => 10,
+        :timeout => 30,
         :params_encoder => Faraday::FlatParamsEncoder
       },
       :ssl => {
