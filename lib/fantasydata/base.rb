@@ -32,6 +32,7 @@ module Fantasydata
     # @return [Fantasydata::Base]
     def initialize(attrs={})
       new_attrs = {}
+      attrs = {} if attrs.nil?
       attrs.to_hash.each_pair do |k,v|
         new_attrs.merge!({underscore_key(k) => v})
       end
